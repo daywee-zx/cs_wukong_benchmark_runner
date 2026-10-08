@@ -20,6 +20,8 @@ class Program
         ConfigEditor.SetCPUConfig(configPath);
 
         BenchmarkRunner benchmarkRunner = new BenchmarkRunner();
+
+        Console.WriteLine("Running CPU Benchmark...");
         benchmarkRunner.RunCPU(exePath, configPath);
 
         BenchmarkResult? benchmarkResult = LogParcer.GetBenchmarkResult(logDir);
@@ -34,6 +36,7 @@ class Program
             Console.WriteLine("No benchmark result found.");
         }
 
+        Console.WriteLine("\n\nRunning GPU Benchmark...");
         benchmarkRunner.RunGPU(exePath, configPath);
 
         benchmarkResult = LogParcer.GetBenchmarkResult(logDir);
