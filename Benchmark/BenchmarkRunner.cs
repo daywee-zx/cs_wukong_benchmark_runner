@@ -104,15 +104,12 @@ class BenchmarkRunner
             Thread.Sleep(launchDelay);
 
             InputManager.Click();
-            Console.WriteLine("Starting the menu... Click.");
             Thread.Sleep(startBenchmarkDelay);
 
             InputManager.MoveAndClick((int)(firstModX * ResolutionX), (int)(firstModY * ResolutionY));
-            Console.WriteLine($"Clicking the start button... Click at ({(int)(firstModX * ResolutionX)}, {(int)(firstModY * ResolutionY)}).");
             Thread.Sleep(confirmDelay);
 
             InputManager.MoveAndClick((int)(secondModX * ResolutionX), (int)(secondModY * ResolutionY));
-            Console.WriteLine($"Starting the benchmark... Click at ({(int)(secondModX * ResolutionX)}, {(int)(secondModY * ResolutionY)}).");
 
             Thread.Sleep(benchmarkDuration);
         }
