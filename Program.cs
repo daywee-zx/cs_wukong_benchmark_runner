@@ -6,13 +6,16 @@ class Program
         string defaultConfigPath = @"D:\Steam\steamapps\common\Black Myth Wukong Benchmark Tool\b1\Saved\Config\Windows\GameUserSettings.ini";
         string logDir = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Temp\b1\BenchMarkHistory\Tool\";
 
-        // string exePath = args.Length > 0 ? args[0] : defaultExePath;
-        // string configPath = args.Length > 1 ? args[1] : defaultConfigPath;
+        if (args.Length > 2)
+        throw new ArgumentException("Usage: WukongBenchmark [exe-path] [config-path]");
 
-        // TODO : custom config path and exe path
+        string exePath = Path.GetFullPath(args.Length > 0 ? args[0] : defaultExePath);
+        string configPath = Path.GetFullPath(args.Length > 1 ? args[1] : defaultConfigPath);
 
-        string exePath = defaultExePath;
-        string configPath = defaultConfigPath;
+        if (!File.Exists(exePath))
+            throw new FileNotFoundException("Benchmark executable not found.", exePath);
+        if (!File.Exists(configPath))
+            throw new FileNotFoundException("Game settings file not found.", configPath);
 
         ConfigEditor.SetCPUConfig(configPath);
 
