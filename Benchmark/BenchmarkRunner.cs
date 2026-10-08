@@ -58,7 +58,6 @@ class BenchmarkRunner
         {
             if (!process.HasExited)
             {
-                Console.WriteLine($"Stopping benchmark process {process.Id}.");
                 process.Kill(entireProcessTree: true);
             }
         }
